@@ -31,7 +31,6 @@ class HomePage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
-              color: Colors.blueGrey,
               height: 233,
               width: MediaQuery.of(context).size.width,
             ),
@@ -41,7 +40,7 @@ class HomePage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(70),
-                color: Colors.pink,
+                color: Colors.white,
               ),
               height: 456,
               width: MediaQuery.of(context).size.width,
