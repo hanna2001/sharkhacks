@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.white,
               ),
               height: 456,
-              width: 360,
+              width: double.infinity,
             ),
           )
         ],
