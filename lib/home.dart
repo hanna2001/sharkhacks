@@ -15,8 +15,8 @@ class HomePage extends StatelessWidget {
             right: 0,
             child: Container(
               color: Colors.amber,
-              height: 150,
-              width: 100,
+              height: MediaQuery.of(context).size.height/4,
+              width: MediaQuery.of(context).size.width/2,
             ),
           ),
           Container(
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             bottom: 0,
             child: Container(
               color: Colors.blueGrey,
-              height: 233,
+              height: MediaQuery.of(context).size.height/3,
               width: MediaQuery.of(context).size.width,
             ),
           ),
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(70),
                 color: Colors.pink,
               ),
-              height: 456,
+              height: MediaQuery.of(context).size.height/1.6,
               width: MediaQuery.of(context).size.width,
             ),
           )
