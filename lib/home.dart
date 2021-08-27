@@ -26,14 +26,14 @@ class HomePage extends StatelessWidget {
               color: Colors.amber,
             ),
             height: 150,
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
           ),
           Positioned(
             bottom: 0,
             child: Container(
               color: Colors.blueGrey,
               height: 233,
-              width: 360,
+              width: MediaQuery.of(context).size.width,
             ),
           ),
           Positioned(
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                 color: Colors.pink,
               ),
               height: 456,
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width,
             ),
           )
         ],
