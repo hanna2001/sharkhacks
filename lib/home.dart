@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             right: 0,
             child: Container(
               color: Colors.amber,
-              height: 100,
+              height: 150,
               width: 100,
             ),
           ),
@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
             child: Container(
               color: Colors.blueGrey,
               height: 233,
-              width: double.infinity,
+              width: 360,
             ),
           ),
           Positioned(
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(70),
-                color: Colors.white,
+                color: Colors.pink,
               ),
               height: 456,
               width: double.infinity,
