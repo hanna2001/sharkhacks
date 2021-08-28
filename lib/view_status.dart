@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sharkhack/view_status2.dart';
 
 class ViewStatus extends StatefulWidget {
   @override
@@ -59,22 +60,26 @@ class _ViewStatusState extends State<ViewStatus> {
                 children: [
                   Align(
                     alignment: Alignment.topLeft,
-                    child: Text('Enter mobile number',
-                        style: TextStyle(color: Color(0xFF130F27))),
+                    child: Text(
+                      'Enter mobile number',
+                      style: TextStyle(color: Color(0xFF130F27), fontSize: 20),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
                     child: TextField(
+                      style: TextStyle(color: Colors.white),
                       showCursor: false,
                       cursorHeight: 30,
                       decoration: InputDecoration(
-                          hintText: 'type here',
-                          hintStyle: TextStyle(color: Colors.white),
-                          contentPadding: EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 15),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          )),
+                        hintText: 'type here',
+                        hintStyle: TextStyle(color: Colors.white),
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                        disabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                      ),
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
@@ -91,9 +96,15 @@ class _ViewStatusState extends State<ViewStatus> {
                     child: Material(
                       color: Color(0xFF3A70A3),
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                       child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ViewStatus2()));
+                        },
                         child: Text(
                           'view',
                           style: TextStyle(color: Colors.white),
