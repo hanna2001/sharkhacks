@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sharkhack/educate.dart';
+import 'package:sharkhack/learn.dart';
 import 'package:sharkhack/new_report.dart';
 import 'package:sharkhack/view_status.dart';
 
@@ -28,10 +30,10 @@ class HomePage extends StatelessWidget {
               children: [
                 Text(
                   'Saverine',
-                  style: TextStyle(color: Colors.white, fontSize: 40),
+                  style: TextStyle(color: Colors.white, fontSize: 50),
                 ),
                 Text('save marine life,\none step at a time',
-                    style: TextStyle(color: Colors.white, fontSize: 20))
+                    style: TextStyle(color: Colors.white, fontSize: 18))
               ],
             ),
             decoration: BoxDecoration(
@@ -45,6 +47,21 @@ class HomePage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
+              padding: EdgeInsets.all(20),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: MaterialButton(
+                  color: Color(0xFF3A70A3),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Educate()));
+                  },
+                  child: Text(
+                    'educate yourself',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.fill,
@@ -140,7 +157,10 @@ class HomePage extends StatelessWidget {
                       Text('not sure about what to report \nand what to not? '),
                       MaterialButton(
                         color: Color(0xFF130F27),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => Learn()));
+                        },
                         child: Text(
                           'learn here',
                           style: TextStyle(color: Colors.white),
