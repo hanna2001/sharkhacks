@@ -31,6 +31,10 @@ dependencies:
   pie_chart: ^5.0.0
   country_picker: ^1.0.4
   webview_flutter: ^2.0.12
+  firebase_auth:
+  cloud_firestore:
+  firebase_core:
+  twilio_flutter: ^0.0.9
 
 dev_dependencies:
   flutter_test:

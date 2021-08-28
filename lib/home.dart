@@ -51,6 +51,10 @@ class HomePage extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: MaterialButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  height: 60,
+                  minWidth: 120,
                   color: Color(0xFF3A70A3),
                   onPressed: () {
                     Navigator.push(context,
@@ -154,8 +158,15 @@ class HomePage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('not sure about what to report \nand what to not? '),
+                      Text(
+                        'not sure about what to report \nand what to not? ',
+                        style: TextStyle(fontSize: 18),
+                      ),
                       MaterialButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        height: 60,
+                        minWidth: 120,
                         color: Color(0xFF130F27),
                         onPressed: () {
                           Navigator.push(context,

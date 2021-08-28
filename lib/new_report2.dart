@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sharkhack/new_report3.dart';
 
-
 class NewReport2 extends StatefulWidget {
   @override
   _NewReport2State createState() => _NewReport2State();
 }
+
+String countryname, address, zip;
+String phonecode;
 
 class _NewReport2State extends State<NewReport2> {
   Color topColor = Color(0xff5BA455);
@@ -57,7 +59,7 @@ class _NewReport2State extends State<NewReport2> {
                 ),
                 Container(
                   alignment: Alignment.bottomLeft,
-                  padding: EdgeInsets.only(left: 31, top: 45),
+                  padding: EdgeInsets.only(left: 31, top: 20),
                   child: Text(
                     'Steps ' + stage + '/3',
                     style: TextStyle(
@@ -145,6 +147,9 @@ class _NewReport2State extends State<NewReport2> {
                               onSelect: (Country country) {
                                 int index = country.displayName.indexOf('(');
                                 setState(() {
+                                  phonecode = country.countryCode.toString();
+                                  countryname =
+                                      country.displayName.substring(0, index);
                                   this.country =
                                       country.displayName.substring(0, index);
                                 });
@@ -181,10 +186,9 @@ class _NewReport2State extends State<NewReport2> {
                   ),
                   Container(
                     child: TextField(
-                      keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                      ],
+                      onChanged: (value) {
+                        zip = value;
+                      },
                       decoration: InputDecoration(
                         hintText: 'Type here...',
                         hintStyle: TextStyle(
@@ -227,6 +231,9 @@ class _NewReport2State extends State<NewReport2> {
                   ),
                   Container(
                     child: TextField(
+                      onChanged: (value) {
+                        address = value;
+                      },
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       decoration: InputDecoration(
@@ -251,7 +258,9 @@ class _NewReport2State extends State<NewReport2> {
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage("images/textbg.png",),
+                        image: AssetImage(
+                          "images/textbg.png",
+                        ),
                       ),
                     ),
                   )
@@ -269,5 +278,4 @@ class _NewReport2State extends State<NewReport2> {
       ),
     );
   }
-
 }

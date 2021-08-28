@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "306268687567",
+    "project_id": "saverine-1e6b0",
+    "storage_bucket": "saverine-1e6b0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306268687567:android:9269ab8969149cba1d7bba",
+        "android_client_info": {
+          "package_name": "com.app.sharkhacks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306268687567-et6driimn3e3v24gkkocfvka0ccjmq21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoJcrH5S8f0WJCn7VCA5sCeeBAhlso6D4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306268687567-et6driimn3e3v24gkkocfvka0ccjmq21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306268687567:android:f60f4aed96f93eaf1d7bba",
+        "android_client_info": {
+          "package_name": "com.food.indeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306268687567-et6driimn3e3v24gkkocfvka0ccjmq21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoJcrH5S8f0WJCn7VCA5sCeeBAhlso6D4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306268687567-et6driimn3e3v24gkkocfvka0ccjmq21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
