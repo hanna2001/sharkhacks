@@ -46,6 +46,7 @@ class HomePage extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.fill,
                   image: AssetImage('images/Rectangle 2.png'),
                 ),
               ),
