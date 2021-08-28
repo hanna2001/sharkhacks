@@ -2,8 +2,8 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:page_slider/page_slider.dart';
 import 'package:sharkhack/new_report3.dart';
+
 
 class NewReport2 extends StatefulWidget {
   @override
@@ -94,9 +94,9 @@ class _NewReport2State extends State<NewReport2> {
                 margin: EdgeInsets.only(bottom: 43, right: 35),
               ),
               decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
+                  image: AssetImage('images/bottom_img.png'),
                   fit: BoxFit.fill,
-                  image: AssetImage('images/Rectangle 2.png'),
                 ),
               ),
               height: MediaQuery.of(context).size.height / 3,
@@ -251,9 +251,7 @@ class _NewReport2State extends State<NewReport2> {
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(
-                          "images/textbg.png",
-                        ),
+                        image: AssetImage("images/textbg.png",),
                       ),
                     ),
                   )
@@ -271,4 +269,5 @@ class _NewReport2State extends State<NewReport2> {
       ),
     );
   }
+
 }

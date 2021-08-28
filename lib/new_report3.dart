@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:sharkhack/success_page.dart';
 
 class NewReport3 extends StatefulWidget {
   @override
@@ -71,28 +72,37 @@ class _NewReport3State extends State<NewReport3> {
             child: Container(
               child: Container(
                 child: FloatingActionButton.extended(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SuccessPage())
+                    );
+                  },
                   shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          width: 4.0, color: const Color(0xff3A70A3)),
-                      borderRadius: BorderRadius.all(Radius.circular(16.0))),
-                  label: Text(
-                    buttonText,
-                    style: TextStyle(fontSize: 18),
-                  ),
+                    side: BorderSide(width: 4.0,
+                        color:const Color(0xff3A70A3)),
+                    borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                  label: Text(buttonText,
+                    style: TextStyle( fontSize: 18),),
+
                   backgroundColor: const Color(0xff3A70A3),
                 ),
+
                 alignment: Alignment.bottomRight,
-                margin: EdgeInsets.only(bottom: 43, right: 35),
+                margin: EdgeInsets.only(bottom: 43,right: 35),
+
               ),
+
               decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
+                  image: AssetImage('images/bottom_img.png'),
+
                   fit: BoxFit.fill,
-                  image: AssetImage('images/Rectangle 2.png'),
                 ),
               ),
               height: MediaQuery.of(context).size.height / 3,
               width: MediaQuery.of(context).size.width,
+
             ),
           ),
           Positioned(
@@ -112,58 +122,61 @@ class _NewReport3State extends State<NewReport3> {
                       ),
                     ),
                   ),
+
+
                   Container(
                     child: TextField(
                       keyboardType: TextInputType.number,
                       maxLength: 10,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+
                       ],
                       decoration: InputDecoration(
                         hintText: 'Type here...',
                         hintStyle: TextStyle(
-                          color: Colors.white,
+                          color : Colors.white,
                           fontWeight: FontWeight.w700,
                         ),
                         disabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                       ),
-                      style: TextStyle(color: Colors.white),
+                      style : TextStyle( color : Colors.white),
+
                     ),
                     height: 75,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.only(left: 20),
-                    margin: EdgeInsets.only(left: 31, right: 23),
-                    decoration: BoxDecoration(
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.only(left: 20,top: 10),
+                    margin: EdgeInsets.only(left: 31,right: 23),
+                    decoration:  BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(
-                          "images/textbg.png",
-                        ),
+                        image: AssetImage("images/textbg.png",),
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 8, right: 23),
+
+
+                 Container(
+                    margin: EdgeInsets.only(top: 8,right: 23),
                     alignment: Alignment.centerRight,
                     child: FloatingActionButton.extended(
                       onPressed: () {
                         // Add your onPressed code here!
-                      },
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(
-                              width: 4.0, color: const Color(0xff3A70A3)),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(16.0))),
-                      label: Text(
-                        'Get OTP',
-                        style: TextStyle(fontSize: 18),
-                      ),
+                      },shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 4.0,
+                            color:const Color(0xff3A70A3)),
+                        borderRadius: BorderRadius.all(Radius.circular(16.0))),
+                      label: Text('Get OTP',
+                        style: TextStyle( fontSize: 18),),
+
                       backgroundColor: const Color(0xff3A70A3),
                     ),
-                  ),
+                   ),
+
+
                   Container(
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(
@@ -187,26 +200,25 @@ class _NewReport3State extends State<NewReport3> {
                       decoration: InputDecoration(
                         hintText: 'Enter OTP',
                         hintStyle: TextStyle(
-                          color: Colors.white,
+                          color : Colors.white,
                           fontWeight: FontWeight.w700,
                         ),
                         disabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                       ),
-                      style: TextStyle(color: Colors.white),
+                      style : TextStyle( color : Colors.white),
+
                     ),
                     height: 75,
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
-                    margin: EdgeInsets.only(left: 31, right: 23),
-                    decoration: BoxDecoration(
+                    margin: EdgeInsets.only(left: 31,right: 23),
+                    decoration:  BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage(
-                          "images/textbg.png",
-                        ),
+                        image: AssetImage("images/textbg.png",),
                       ),
                     ),
                   ),
