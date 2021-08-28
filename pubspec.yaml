@@ -35,6 +35,8 @@ dependencies:
   cloud_firestore:
   firebase_core:
   twilio_flutter: ^0.0.9
+  modal_bottom_sheet: ^2.0.0
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 //import 'package:page_slider/page_slider.dart';
+import 'new_report3.dart';
 
 import 'new_report2.dart';
 
@@ -116,9 +117,7 @@ class NewReportPage extends StatelessWidget {
                   ),
                   Container(
                     child: TextField(
-                      onChanged: (value) {
-                        title = value;
-                      },
+                      controller: titlecontroller,
                       decoration: InputDecoration(
                         hintText: 'Type here...',
                         hintStyle: TextStyle(
@@ -161,9 +160,7 @@ class NewReportPage extends StatelessWidget {
                   ),
                   Container(
                     child: TextField(
-                      onChanged: (value) {
-                        description = value;
-                      },
+                      controller: descontroller,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       decoration: InputDecoration(

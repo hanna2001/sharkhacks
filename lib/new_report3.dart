@@ -7,6 +7,7 @@ import 'package:sharkhack/new_report2.dart';
 import 'success_page.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 import 'dart:math';
+import 'package:http/http.dart';
 
 class NewReport3 extends StatefulWidget {
   @override
@@ -18,12 +19,29 @@ String mob;
 Map<dynamic, dynamic> lol;
 String otpsent = "";
 String otpget = "x", otpput = "y";
+final titlecontroller = TextEditingController();
+final descontroller = TextEditingController();
+final zipcontroller = TextEditingController();
+final addresscontroller = TextEditingController();
+final mobcontroller = TextEditingController();
 
 class _NewReport3State extends State<NewReport3> {
-  TwilioFlutter twilioFlutter = TwilioFlutter(
-      accountSid: 'AC4fb983711958f6d14a221077fa8464e1',
-      authToken: 'a15aa94cb28ea8942cc13d3a8384ea7e',
-      twilioNumber: '+12542390354');
+  TwilioFlutter twilioFlutter;
+
+  @override
+  void initState() {
+    twilioFlutter = twilioFlutter = TwilioFlutter(
+        accountSid: 'AC4fb983711958f6d14a221077fa8464e1',
+        authToken: '0e68e9da7982b3eec382cc55bafec5e9',
+        twilioNumber: '+12542390354');
+
+    super.initState();
+  }
+
+  // TwilioFlutter twilioFlutter = TwilioFlutter(
+  //     accountSid: 'AC4fb983711958f6d14a221077fa8464e1',
+  //     authToken: '0e68e9da7982b3eec382cc55bafec5e9',
+  //     twilioNumber: '+12542390354');
   Color topColor = Color(0xff7355A4);
   String stage = '3';
   String buttonText = 'Submit';
@@ -91,7 +109,7 @@ class _NewReport3State extends State<NewReport3> {
                     if (otpput == otpget) {
                       FirebaseFirestore.instance
                           .collection("users")
-                          .doc(mob)
+                          .doc(mobcontroller.text)
                           .get()
                           .then((value) => {
                                 if (value.exists)
@@ -197,9 +215,7 @@ class _NewReport3State extends State<NewReport3> {
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
                       ],
-                      onChanged: (value) {
-                        mob = value.toString();
-                      },
+                      controller: mobcontroller,
                       decoration: InputDecoration(
                         hintText: 'Type here...',
                         hintStyle: TextStyle(
@@ -230,19 +246,27 @@ class _NewReport3State extends State<NewReport3> {
                     margin: EdgeInsets.only(top: 8, right: 23),
                     alignment: Alignment.centerRight,
                     child: FloatingActionButton.extended(
-                      onPressed: () {
-                        print(phonecode + mob);
-                        String otpput =
+                      onPressed: () async {
+                        // print(phonecode + mob);
+                        // String otpput =
+                        //     ;
+                        String otp =
                             (1000 + Random().nextInt(9999 - 1000)).toString();
-                        twilioFlutter
+                        await twilioFlutter
                             .sendSMS(
-                                toNumber: phonecode + mob,
-                                messageBody: 'your otp is $otpput')
-                            .then((value) => {
-                                  setState(() {
-                                    otpsent = "OTP sent successfully!";
-                                  })
-                                });
+                                toNumber: '$phonecode+${mobcontroller.text}',
+                                messageBody: 'your otp is $otp')
+                            .then((value) {
+                          setState(() {
+                            otpsent = otp;
+                          });
+                        });
+
+                        // then((value) => {
+                        //       setState(() {
+                        //         otpsent = "OTP sent successfully!";
+                        //       })
+                        //     });
                       },
                       shape: RoundedRectangleBorder(
                           side: BorderSide(
@@ -256,7 +280,7 @@ class _NewReport3State extends State<NewReport3> {
                       backgroundColor: const Color(0xff3A70A3),
                     ),
                   ),
-                  Text("$otpsent"),
+                  // Text("$otpsent"),
                   Container(
                     alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(

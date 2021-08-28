@@ -145,13 +145,14 @@ class _NewReport2State extends State<NewReport2> {
                               showPhoneCode:
                                   false, // optional. Shows phone code before the country name.
                               onSelect: (Country country) {
-                                int index = country.displayName.indexOf('(');
                                 setState(() {
                                   phonecode = country.countryCode.toString();
-                                  countryname =
-                                      country.displayName.substring(0, index);
-                                  this.country =
-                                      country.displayName.substring(0, index);
+                                  countryname = country.displayNameNoCountryCode
+                                      .toString();
+                                  // countryname =
+                                  //     country.displayName.substring(0, index);
+                                  // this.country =
+                                  //     country.displayName.substring(0, index);
                                 });
                               },
                             );
@@ -186,9 +187,7 @@ class _NewReport2State extends State<NewReport2> {
                   ),
                   Container(
                     child: TextField(
-                      onChanged: (value) {
-                        zip = value;
-                      },
+                      controller: zipcontroller,
                       decoration: InputDecoration(
                         hintText: 'Type here...',
                         hintStyle: TextStyle(
@@ -231,9 +230,7 @@ class _NewReport2State extends State<NewReport2> {
                   ),
                   Container(
                     child: TextField(
-                      onChanged: (value) {
-                        address = value;
-                      },
+                      controller: addresscontroller,
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       decoration: InputDecoration(

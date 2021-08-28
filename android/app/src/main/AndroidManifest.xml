@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sharkhack">
    <application
-        android:label="sharkhack"
+        android:label="Saverine"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

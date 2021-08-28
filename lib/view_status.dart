@@ -6,6 +6,8 @@ class ViewStatus extends StatefulWidget {
   _ViewStatusState createState() => _ViewStatusState();
 }
 
+String mobile;
+
 class _ViewStatusState extends State<ViewStatus> {
   @override
   Widget build(BuildContext context) {
@@ -68,6 +70,11 @@ class _ViewStatusState extends State<ViewStatus> {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
                     child: TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          mobile = value;
+                        });
+                      },
                       style: TextStyle(color: Colors.white),
                       showCursor: false,
                       cursorHeight: 30,
