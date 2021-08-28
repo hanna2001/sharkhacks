@@ -87,9 +87,9 @@ class NewReportPage extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 43, right: 35),
               ),
               decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage('images/bottom_img.png'),
+                image: DecorationImage(
                   fit: BoxFit.fill,
+                  image: AssetImage('images/Rectangle 2.png'),
                 ),
               ),
               height: MediaQuery.of(context).size.height / 3,
@@ -136,7 +136,7 @@ class NewReportPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       image: DecorationImage(
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                         image: AssetImage(
                           "images/textbg.png",
                         ),

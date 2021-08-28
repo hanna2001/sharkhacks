@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sharkhack/new_report.dart';
 import 'package:sharkhack/view_status.dart';
 
 class HomePage extends StatelessWidget {
@@ -65,49 +66,69 @@ class HomePage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.add,
-                              size: 50,
-                              color: Color(0xFFEBEBEB),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NewReportPage(),
                             ),
-                            Text(
-                              'raise new \n   report',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                        height: MediaQuery.of(context).size.height / 6,
-                        width: MediaQuery.of(context).size.height / 8,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('images/home2.png'),
+                          );
+                        },
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 50,
+                                color: Color(0xFFEBEBEB),
+                              ),
+                              Text(
+                                'raise new \n   report',
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          ),
+                          height: MediaQuery.of(context).size.height / 6,
+                          width: MediaQuery.of(context).size.height / 8,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('images/home2.png'),
+                            ),
                           ),
                         ),
                       ),
-                      Container(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.list,
-                              size: 50,
-                              color: Color(0xFFEBEBEB),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ViewStatus(),
                             ),
-                            Text(
-                              'view reports \n      status',
-                              style: TextStyle(color: Colors.white),
-                            )
-                          ],
-                        ),
-                        height: MediaQuery.of(context).size.height / 6,
-                        width: MediaQuery.of(context).size.height / 8,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('images/home1.png'),
+                          );
+                        },
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.list,
+                                size: 50,
+                                color: Color(0xFFEBEBEB),
+                              ),
+                              Text(
+                                'view reports \n      status',
+                                style: TextStyle(color: Colors.white),
+                              )
+                            ],
+                          ),
+                          height: MediaQuery.of(context).size.height / 6,
+                          width: MediaQuery.of(context).size.height / 8,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('images/home1.png'),
+                            ),
                           ),
                         ),
                       )
@@ -119,14 +140,7 @@ class HomePage extends StatelessWidget {
                       Text('not sure about what to report \nand what to not? '),
                       MaterialButton(
                         color: Color(0xFF130F27),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ViewStatus(),
-                            ),
-                          );
-                        },
+                        onPressed: () {},
                         child: Text(
                           'learn here',
                           style: TextStyle(color: Colors.white),

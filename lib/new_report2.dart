@@ -94,9 +94,9 @@ class _NewReport2State extends State<NewReport2> {
                 margin: EdgeInsets.only(bottom: 43, right: 35),
               ),
               decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage('images/bottom_img.png'),
+                image: DecorationImage(
                   fit: BoxFit.fill,
+                  image: AssetImage('images/Rectangle 2.png'),
                 ),
               ),
               height: MediaQuery.of(context).size.height / 3,
