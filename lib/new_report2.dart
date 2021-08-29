@@ -146,9 +146,13 @@ class _NewReport2State extends State<NewReport2> {
                                   false, // optional. Shows phone code before the country name.
                               onSelect: (Country country) {
                                 setState(() {
-                                  phonecode = country.countryCode.toString();
+                                  this.country =
+                                      country.displayNameNoCountryCode;
+                                  phonecode = country.phoneCode.toString();
                                   countryname = country.displayNameNoCountryCode
                                       .toString();
+                                  print(phonecode);
+                                  print(countryname);
                                   // countryname =
                                   //     country.displayName.substring(0, index);
                                   // this.country =

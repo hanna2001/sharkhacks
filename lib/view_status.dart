@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sharkhack/view_status2.dart';
 
@@ -9,6 +10,8 @@ class ViewStatus extends StatefulWidget {
 String mobile;
 
 class _ViewStatusState extends State<ViewStatus> {
+  String err = "";
+  final mobcont = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,11 +73,7 @@ class _ViewStatusState extends State<ViewStatus> {
                   Container(
                     margin: EdgeInsets.symmetric(vertical: 20),
                     child: TextField(
-                      onChanged: (value) {
-                        setState(() {
-                          mobile = value;
-                        });
-                      },
+                      controller: mobcont,
                       style: TextStyle(color: Colors.white),
                       showCursor: false,
                       cursorHeight: 30,
@@ -98,6 +97,7 @@ class _ViewStatusState extends State<ViewStatus> {
                       ),
                     ),
                   ),
+                  Text(err),
                   Align(
                     alignment: Alignment.bottomRight,
                     child: Material(
@@ -107,10 +107,39 @@ class _ViewStatusState extends State<ViewStatus> {
                       ),
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ViewStatus2()));
+                          FirebaseFirestore.instance
+                              .collection("users")
+                              .doc(mobcont.text)
+                              .get()
+                              .then((value) => {
+                                    if (value.exists)
+                                      {
+                                        setState(() {
+                                          rep = List.from(
+                                              value.data()['reports']);
+                                          a = value.data()['inprogress'];
+                                          b = value.data()['resolved'];
+
+                                          // dataMap['in progress'] = double.parse(
+                                          //     value.data()[
+                                          //         'count["in progress"]']);
+                                          // dataMap['resolved'] = double.parse(
+                                          //     value
+                                          //         .data()['count["resolved"]']);
+                                        }),
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewStatus2()))
+                                      }
+                                    else
+                                      {
+                                        setState(() {
+                                          err = "record doesnt exist!!";
+                                        })
+                                      }
+                                  });
                         },
                         child: Text(
                           'view',

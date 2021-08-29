@@ -24,6 +24,7 @@ final descontroller = TextEditingController();
 final zipcontroller = TextEditingController();
 final addresscontroller = TextEditingController();
 final mobcontroller = TextEditingController();
+final otpcontroller = TextEditingController();
 
 class _NewReport3State extends State<NewReport3> {
   TwilioFlutter twilioFlutter;
@@ -31,17 +32,12 @@ class _NewReport3State extends State<NewReport3> {
   @override
   void initState() {
     twilioFlutter = twilioFlutter = TwilioFlutter(
-        accountSid: 'AC4fb983711958f6d14a221077fa8464e1',
-        authToken: '0e68e9da7982b3eec382cc55bafec5e9',
-        twilioNumber: '+12542390354');
+        accountSid: 'lolol', authToken: 'hehehe', twilioNumber: '+12542390354');
 
     super.initState();
   }
 
-  // TwilioFlutter twilioFlutter = TwilioFlutter(
-  //     accountSid: 'AC4fb983711958f6d14a221077fa8464e1',
-  //     authToken: '0e68e9da7982b3eec382cc55bafec5e9',
-  //     twilioNumber: '+12542390354');
+  int inprog = 0, res = 0;
   Color topColor = Color(0xff7355A4);
   String stage = '3';
   String buttonText = 'Submit';
@@ -105,9 +101,9 @@ class _NewReport3State extends State<NewReport3> {
             child: Container(
               child: Container(
                 child: FloatingActionButton.extended(
-                  onPressed: () {
-                    if (otpput == otpget) {
-                      FirebaseFirestore.instance
+                  onPressed: () async {
+                    if (otpsent == otpcontroller.text) {
+                      await FirebaseFirestore.instance
                           .collection("users")
                           .doc(mobcontroller.text)
                           .get()
@@ -116,16 +112,19 @@ class _NewReport3State extends State<NewReport3> {
                                   {
                                     lol = {
                                       'country': countryname,
-                                      'desc': description,
+                                      'desc': descontroller.text,
                                       'isresolved': false,
-                                      'title': title,
-                                      'zipcode': zip,
-                                      'address': address
+                                      'title': titlecontroller.text,
+                                      'zipcode': zipcontroller.text,
+                                      'address': addresscontroller.text
                                     },
+                                    inprog = value.data()['inprogress']++,
+                                    res = value.data()['resolved']++,
                                     FirebaseFirestore.instance
                                         .collection("users")
                                         .doc(mob)
                                         .update({
+                                      'inprogress': inprog,
                                       'reports': FieldValue.arrayUnion([lol])
                                     }).then((value) => {
                                               Navigator.push(
@@ -139,16 +138,18 @@ class _NewReport3State extends State<NewReport3> {
                                   {
                                     lol = {
                                       'country': countryname,
-                                      'desc': description,
+                                      'desc': descontroller.text,
                                       'isresolved': false,
-                                      'title': title,
-                                      'zipcode': zip,
-                                      'address': address
+                                      'title': titlecontroller.text,
+                                      'zipcode': zipcontroller.text,
+                                      'address': addresscontroller.text
                                     },
                                     FirebaseFirestore.instance
                                         .collection("users")
-                                        .doc(mob)
+                                        .doc(mobcontroller.text)
                                         .set({
+                                      'inprogress': 1,
+                                      'resolved': 0,
                                       'reports': [lol]
                                     }).then((value) => {
                                               Navigator.push(
@@ -254,13 +255,21 @@ class _NewReport3State extends State<NewReport3> {
                             (1000 + Random().nextInt(9999 - 1000)).toString();
                         await twilioFlutter
                             .sendSMS(
-                                toNumber: '$phonecode+${mobcontroller.text}',
+                                toNumber: '+$phonecode${mobcontroller.text}',
                                 messageBody: 'your otp is $otp')
                             .then((value) {
                           setState(() {
                             otpsent = otp;
                           });
                         });
+                        print(otp);
+                        // print('+$phonecode${mobcontroller.text}');
+
+                        // print(titlecontroller.text);
+                        // print(descontroller.text);
+                        // print(zipcontroller.text);
+                        // print(addresscontroller.text);
+                        // print(mobcontroller.text);
 
                         // then((value) => {
                         //       setState(() {
@@ -297,9 +306,7 @@ class _NewReport3State extends State<NewReport3> {
                   ),
                   Container(
                     child: TextField(
-                      onChanged: (value) {
-                        otpget = value.toString();
-                      },
+                      controller: otpcontroller,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),

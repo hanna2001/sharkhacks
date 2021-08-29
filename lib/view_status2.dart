@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sharkhack/view_status.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -8,27 +9,41 @@ class ViewStatus2 extends StatefulWidget {
   _ViewStatusState2 createState() => _ViewStatusState2();
 }
 
+int a = 0, b = 0;
 List<dynamic> rep;
 Map<String, double> dataMap = {
-  "in progress": 5,
-  "resolved": 3,
+  "in progress": double.parse(a.toString()),
+  "resolved": double.parse(b.toString()),
 };
 
 class _ViewStatusState2 extends State<ViewStatus2> {
-  void x() {
-    FirebaseFirestore.instance
-        .collection("users")
-        .doc(mobile)
-        .get()
-        .then((value) => {
-              setState(() {
-                rep = List.from(value.data()['reports']);
-              })
-            });
-  }
+  // void x() {
+  //   FirebaseFirestore.instance
+  //       .collection("users")
+  //       .doc(mobile)
+  //       .get()
+  //       .then((value) => {
+  //             setState(() {
+  //               rep = List.from(value.data()['reports']);
+  //             })
+  //           });
+  // }
+  // void y() {
+  //   for (int i = 0; i < rep.length; i++) {
+  //     if (rep[i]['isresolved'] == false) {
+  //       setState(() {
+  //         dataMap['in progress']++;
+  //       });
+  //     }
+  //   }
+  //   setState(() {
+  //     dataMap['resolved'] = rep.length - dataMap['in progress'];
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    // y();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
@@ -79,13 +94,51 @@ class _ViewStatusState2 extends State<ViewStatus2> {
                 color: Colors.white,
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  PieChart(
-                    dataMap: dataMap,
-                    animationDuration: Duration(milliseconds: 800),
-                    chartType: ChartType.ring,
+                  Padding(
+                    padding: EdgeInsets.all(30),
+                    child: PieChart(
+                      dataMap: dataMap,
+                      animationDuration: Duration(milliseconds: 800),
+                      chartType: ChartType.ring,
+                    ),
                   ),
-                  Text(rep.toString())
+                  // Text(rep.toString()),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {
+                          // print(a);
+                          // print(b);
+                          showModalBottomSheet(
+                              context: context,
+                              builder: (context) => Container(
+                                    child: ListView.builder(
+                                      itemCount: rep.length,
+                                      itemBuilder: (context, index) {
+                                        return ListTile(
+                                            leading: Icon(Icons.book,
+                                                size: 50, color: Colors.green),
+                                            title: Text(rep[index]['country'] +
+                                                "," +
+                                                rep[index]['zipcode']),
+                                            subtitle: Text(rep[index]['title']),
+                                            trailing: Text("status:\n" +
+                                                checkhehe(
+                                                    rep[index]['isresolved'])));
+                                      },
+                                    ),
+                                  ));
+                        },
+                        child: Text(
+                          "See Details",
+                          style: TextStyle(color: Colors.deepOrange),
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               ),
               height: MediaQuery.of(context).size.height / 1.6,
@@ -95,5 +148,13 @@ class _ViewStatusState2 extends State<ViewStatus2> {
         ],
       ),
     );
+  }
+}
+
+checkhehe(bool val) {
+  if (val == false) {
+    return "in progress";
+  } else {
+    return "resolved";
   }
 }
