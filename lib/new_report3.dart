@@ -32,7 +32,9 @@ class _NewReport3State extends State<NewReport3> {
   @override
   void initState() {
     twilioFlutter = twilioFlutter = TwilioFlutter(
-        accountSid: 'lolol', authToken: 'hehehe', twilioNumber: '+12542390354');
+        accountSid: 'hehe',
+        authToken: 'hehe',
+        twilioNumber: 'lol');
 
     super.initState();
   }
@@ -122,9 +124,9 @@ class _NewReport3State extends State<NewReport3> {
                                     res = value.data()['resolved']++,
                                     FirebaseFirestore.instance
                                         .collection("users")
-                                        .doc(mob)
+                                        .doc(mobcontroller.text)
                                         .update({
-                                      'inprogress': inprog,
+                                      'inprogress': FieldValue.increment(1),
                                       'reports': FieldValue.arrayUnion([lol])
                                     }).then((value) => {
                                               Navigator.push(

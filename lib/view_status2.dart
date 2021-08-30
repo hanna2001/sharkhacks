@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:sharkhack/details.dart';
 import 'package:sharkhack/view_status.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -43,6 +45,7 @@ class _ViewStatusState2 extends State<ViewStatus2> {
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
     // y();
     return Scaffold(
       backgroundColor: Colors.white,
@@ -110,27 +113,19 @@ class _ViewStatusState2 extends State<ViewStatus2> {
                     children: <Widget>[
                       MaterialButton(
                         onPressed: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         builder: (context) => Details()));
                           // print(a);
                           // print(b);
                           showModalBottomSheet(
-                              context: context,
-                              builder: (context) => Container(
-                                    child: ListView.builder(
-                                      itemCount: rep.length,
-                                      itemBuilder: (context, index) {
-                                        return ListTile(
-                                            leading: Icon(Icons.book,
-                                                size: 50, color: Colors.green),
-                                            title: Text(rep[index]['country'] +
-                                                "," +
-                                                rep[index]['zipcode']),
-                                            subtitle: Text(rep[index]['title']),
-                                            trailing: Text("status:\n" +
-                                                checkhehe(
-                                                    rep[index]['isresolved'])));
-                                      },
-                                    ),
-                                  ));
+                            context: context,
+                            builder: (context) => Container(
+                              height: 300,
+                              child: details(w),
+                            ),
+                          );
                         },
                         child: Text(
                           "See Details",
@@ -151,8 +146,8 @@ class _ViewStatusState2 extends State<ViewStatus2> {
   }
 }
 
-checkhehe(bool val) {
-  if (val == false) {
+checkhehe(val) {
+  if (val == false || val == "true") {
     return "in progress";
   } else {
     return "resolved";
